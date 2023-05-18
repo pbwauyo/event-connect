@@ -33,7 +33,7 @@ class Event(models.Model):
     date = models.DateField(verbose_name="Date")
     time  = models.TimeField(verbose_name="Time")
     location = models.CharField(verbose_name="Location", max_length=100)
-    description = models.TextField(verbose_name="Description", max_length=100)
+    description = models.TextField(verbose_name="Description")
     attendees = models.ManyToManyField('Attendee', blank=True)
 
     def __str__(self) -> str:
