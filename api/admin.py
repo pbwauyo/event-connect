@@ -28,10 +28,12 @@ class CachingPaginator(Paginator):
 class EventAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'date', 'time', 'location', 'description')
     search_fields = ('name',)
+    ordering = ('id',)
 
 class AttendeeAdmin(admin.ModelAdmin):
-    list_display = ('firstName', 'lastName', 'title', 'organisation', 'nin', 'phone', 'receivedTransport', 'receivedLunch')
+    list_display = ('id','firstName', 'lastName', 'title', 'organisation', 'nin', 'phone', 'receivedTransport', 'receivedLunch')
     search_fields = ('firstName', 'lastName')
+    ordering = ('id',)
 
 admin.site.unregister(Group)
 admin.site.unregister(User)
