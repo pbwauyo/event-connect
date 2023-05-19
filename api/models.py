@@ -1,16 +1,10 @@
 from django.db import models
 
 class Attendee(models.Model):
-
-    GENDER_CHOICES = [
-        ('M', 'M'),
-        ('F', 'F')
-    ]
-
     firstName = models.CharField(verbose_name="Given Name", max_length=100)
     lastName = models.CharField(verbose_name="Surname", max_length=100)
     title = models.CharField(verbose_name="Title", max_length=100)
-    gender = models.CharField(verbose_name='Gender', choices=GENDER_CHOICES, max_length=10, null=True)
+    gender = models.CharField(verbose_name='Gender', max_length=10, null=True)
     organisation = models.CharField(verbose_name="Organisation", max_length=100)
     nin = models.CharField(verbose_name="NIN", max_length=100)
     phone = models.CharField(verbose_name="Phone", max_length=100)
