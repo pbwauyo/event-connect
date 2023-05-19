@@ -32,4 +32,28 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+class Facilities(models.Model):
+    name = models.CharField(verbose_name="Name", max_length=100)
 
+    def __str__(self) -> str:
+        return self.name
+
+class Reports(models.Model):
+    name = models.CharField(verbose_name="Name", max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
+    
+class Dashboard(models.Model):
+    name = models.CharField(verbose_name="Name", max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
+
+class Client(models.Model):
+    first_name = models.CharField(verbose_name="First Name", max_length=100)
+    last_name = models.CharField(verbose_name="Last Name", max_length=100)
+
+    def __str__(self) -> str:
+        return self.first_name + " " + self.last_name  

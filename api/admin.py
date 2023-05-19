@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Event, Attendee
+from .models import *
 from django.core.paginator import Paginator
 from django.core.cache import cache
 from django.contrib.auth.models import Group, User
+from import_export.admin import ExportActionMixin
 
 # for performance improvement when loading many fields
 class CachingPaginator(Paginator):
@@ -25,18 +26,43 @@ class CachingPaginator(Paginator):
 
     count = property(_get_count)
 
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ('id', 'name', 'date', 'time', 'location', 'description')
     search_fields = ('name',)
     ordering = ('id',)
 
-class AttendeeAdmin(admin.ModelAdmin):
+class AttendeeAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ('id','firstName', 'lastName', 'title', 'organisation', 'nin', 'phone', 'arrivalTime', 'eventId', 'receivedTransport', 'receivedLunch')
     search_fields = ('firstName', 'lastName')
     ordering = ('id',)
+
+class FacilitiesAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ('id', 'name')
+    search_fields = ('name',)
+    ordering = ('id',)
+
+class ReportsAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ('id', 'name',)
+    search_fields = ('name',)
+    ordering = ('id',)
+
+class DashboardAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ('id', 'name',)
+    search_fields = ('name',)
+    ordering = ('id',)
+
+class ClientAdmin(ExportActionMixin, admin.ModelAdmin):
+    list_display = ('id', 'first_name', 'last_name',)
+    search_fields = ('first_name', 'last_name')
+    ordering = ('id',)
+
 
 admin.site.unregister(Group)
 admin.site.unregister(User)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Attendee, AttendeeAdmin)
+admin.site.register(Facilities, FacilitiesAdmin)
+admin.site.register(Reports, ReportsAdmin)
+admin.site.register(Dashboard, DashboardAdmin)
+admin.site.register(Client, ClientAdmin)
 
