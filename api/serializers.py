@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Attendee, Event
 
 class AttendeeSerializer(serializers.ModelSerializer):
-    attendee_events = serializers.SerializerMethodField()
 
     class Meta:
         model = Attendee
