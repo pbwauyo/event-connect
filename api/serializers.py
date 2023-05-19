@@ -4,17 +4,9 @@ from .models import Attendee, Event
 class AttendeeSerializer(serializers.ModelSerializer):
     attendee_events = serializers.SerializerMethodField()
 
-    def get_attendee_events(self, attendee):
-        return [
-            {
-                "name" : event.name,
-                "id" : event.id
-            } for event in attendee.events.all()
-        ]
-
     class Meta:
         model = Attendee
-        exclude = ['events']
+        fields = '__all__'
 
 
 class EventSerializer(serializers.ModelSerializer):

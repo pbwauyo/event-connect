@@ -23,7 +23,7 @@ class Attendee(models.Model):
     arrivalTime = models.TimeField(verbose_name='Arrival Time', auto_now_add=True, null=True, blank=True)
     receivedTransport = models.BooleanField(verbose_name="Received Transport",default=False)
     receivedLunch = models.BooleanField(verbose_name="Receieved Lunch", default=False)
-    events = models.ManyToManyField('Event', blank=True)
+    eventId = models.ForeignKey('Event', blank=True, on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
         return self.firstName + ' ' + self.lastName
