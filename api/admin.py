@@ -31,7 +31,7 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('id',)
 
 class AttendeeAdmin(admin.ModelAdmin):
-    list_display = ('id','firstName', 'lastName', 'title', 'organisation', 'nin', 'phone', 'receivedTransport', 'receivedLunch')
+    list_display = ('id','firstName', 'lastName', 'title', 'organisation', 'nin', 'phone', 'arrivalTime', 'eventId', 'receivedTransport', 'receivedLunch')
     search_fields = ('firstName', 'lastName')
     ordering = ('id',)
 

@@ -20,8 +20,8 @@ from api import urls as api_urls
 
 admin.autodiscover()
 
-admin.site.site_header = 'EventConnect Admin'
-admin.site.site_title = 'EventConnect'
+admin.site.site_header = 'Field Reporting and Monitoring System'
+admin.site.site_title = 'Field Reporting and Monitoring System'
 
 urlpatterns = [
     path('api/v1/', include(api_urls)),

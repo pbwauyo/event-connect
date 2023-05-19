@@ -1,21 +1,15 @@
 from django.db import models
 
 class Attendee(models.Model):
-    TITLE_CHOICES = [
-        ('Mr', 'Mr'),
-        ('Mrs', 'Mrs'),
-        ('Ms', 'Ms'),
-        ('Dr', 'Dr'),
-    ]
 
     GENDER_CHOICES = [
         ('M', 'M'),
         ('F', 'F')
     ]
 
-    firstName = models.CharField(verbose_name="First Name", max_length=100)
-    lastName = models.CharField(verbose_name="Last Name", max_length=100)
-    title = models.CharField(verbose_name="Title", choices=TITLE_CHOICES, max_length=100)
+    firstName = models.CharField(verbose_name="Given Name", max_length=100)
+    lastName = models.CharField(verbose_name="Surname", max_length=100)
+    title = models.CharField(verbose_name="Title", max_length=100)
     gender = models.CharField(verbose_name='Gender', choices=GENDER_CHOICES, max_length=10, null=True)
     organisation = models.CharField(verbose_name="Organisation", max_length=100)
     nin = models.CharField(verbose_name="NIN", max_length=100)
@@ -23,7 +17,7 @@ class Attendee(models.Model):
     arrivalTime = models.TimeField(verbose_name='Arrival Time', auto_now_add=True, null=True, blank=True)
     receivedTransport = models.BooleanField(verbose_name="Received Transport",default=False)
     receivedLunch = models.BooleanField(verbose_name="Receieved Lunch", default=False)
-    eventId = models.ForeignKey('Event', blank=True, on_delete=models.CASCADE, null=True)
+    eventId = models.ForeignKey('Event', blank=True, on_delete=models.CASCADE, null=True, verbose_name="Event")
 
     def __str__(self) -> str:
         return self.firstName + ' ' + self.lastName
